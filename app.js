@@ -13,6 +13,13 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+console.log('authRoutes:', authRoutes);
+console.log('productRoutes:', productRoutes);
+console.log('userRoutes:', userRoutes);
+console.log('cartRoutes:', cartRoutes);
+console.log('orderRoutes:', orderRoutes);
+
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);

@@ -26,6 +26,11 @@ app.use('/users', userRoutes);
 app.use('/carts', cartRoutes);
 app.use('/orders', orderRoutes);
 
+// Define a root route
+app.get('/', (req, res) => {
+    res.send('Welcome to the E-commerce API');
+  });
+
 sequelize.sync().then(() => {
   app.listen(3000, () => {
     console.log('Server is running on port 3000');

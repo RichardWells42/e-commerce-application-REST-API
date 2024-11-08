@@ -7,6 +7,8 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const orderItemRoutes = require('./routes/orderItemRoutes');
+const cartItemRoutes = require('./routes/cartItemRoutes');
 const { sequelize } = require('./models');
 
 const app = express();
@@ -14,22 +16,18 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-console.log('authRoutes:', authRoutes);
-console.log('productRoutes:', productRoutes);
-console.log('userRoutes:', userRoutes);
-console.log('cartRoutes:', cartRoutes);
-console.log('orderRoutes:', orderRoutes);
-
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
 app.use('/carts', cartRoutes);
 app.use('/orders', orderRoutes);
+app.use('/order-items', orderItemRoutes);
+app.use('/cart-items', cartItemRoutes);
 
 // Define a root route
 app.get('/', (req, res) => {
-    res.send('Welcome to the E-commerce API');
-  });
+  res.send('Welcome to the E-commerce API');
+});
 
 sequelize.sync().then(() => {
   app.listen(3000, () => {

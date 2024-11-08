@@ -15,3 +15,13 @@ module.exports = (sequelize, DataTypes) => {
     });
     return Cart;
   };
+
+//   module.exports = (sequelize, DataTypes) => {
+//     const Cart = sequelize.define('Cart', {
+//       userId: {
+//         type: DataTypes.INTEGER,
+//         allowNull: false
+//       }
+//     });
+//     return Cart;
+//   };

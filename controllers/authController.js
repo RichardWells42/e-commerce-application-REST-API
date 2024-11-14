@@ -3,10 +3,15 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 exports.register = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
-  const user = await User.create({ username, password: hashedPassword });
-  res.status(201).json(user);
+  try {
+    const user = await User.create({ username, password: hashedPassword, email });
+    res.status(201).json(user);
+  } catch (error) {
+    console.error('Validation error details:', error); // Log the full error object for debugging
+    res.status(400).json({ error: error });
+  }
 };
 
 exports.login = async (req, res) => {

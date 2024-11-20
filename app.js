@@ -10,6 +10,7 @@ const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const orderItemRoutes = require('./routes/orderItemRoutes');
 const cartItemRoutes = require('./routes/cartItemRoutes');
+const checkoutRoutes = require('./routes/checkoutRoutes'); 
 const { sequelize } = require('./models');
 
 const app = express();
@@ -45,6 +46,7 @@ app.use('/carts', cartRoutes);
 app.use('/orders', orderRoutes);
 app.use('/order-items', orderItemRoutes);
 app.use('/cart-items', cartItemRoutes);
+app.use('/checkout', checkoutRoutes); 
 
 // Define a root route
 app.get('/', (req, res) => {

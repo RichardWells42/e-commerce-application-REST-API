@@ -21,8 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     };
   
     return Order;
-  };
-
+  }; 
 
 // module.exports = (sequelize, DataTypes) => {
 //     const Order = sequelize.define('Order', {

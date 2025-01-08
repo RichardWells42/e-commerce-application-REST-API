@@ -5,10 +5,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+    
     Cart.associate = (models) => {
       console.log('Associating Cart with User and CartItem');
       Cart.belongsTo(models.User, { foreignKey: 'userId' });
       Cart.hasMany(models.CartItem, { foreignKey: 'cartId' });
     };
+
     return Cart;
   };
